@@ -1,0 +1,436 @@
+# Monaco SQL Languages
+
+[![NPM version][npm-image]][npm-url] [![NPM downloads][download-img]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/monaco-sql-languages.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/monaco-sql-languages
+[download-img]: https://img.shields.io/npm/dm/monaco-sql-languages.svg?style=flat
+[download-url]: https://www.npmjs.com/package/monaco-sql-languages
+
+[English](./README.md) | 简体中文
+
+Monaco SQL Languages 是一个基于 Monaco Editor 的 SQL 语言项目，从 [monaco-languages](https://github.com/microsoft/monaco-languages) fork 而来。不同的是，Monaco SQL Languages 支持了各种大数据领域的 SQL 语言以及相应的高级语言功能。
+
+<br/>
+
+## 功能亮点
+- 代码高亮
+- 语法校验
+- 自动补全
+- 内置SQL代码片段
+
+> 由 [dt-sql-parser](https://github.com/DTStack/dt-sql-parser) 提供语法解析功能。
+
+<br/>
+
+## 在线预览
+<https://dtstack.github.io/monaco-sql-languages/>
+
+> 由 [molecule](https://github.com/DTStack/molecule) 提供 IDE UI 支持。
+
+<br/>
+
+## 已支持的 SQL 语言类型
+
+-   MySQL
+-   Flink
+-   Spark
+-   Hive
+-   Trino (Presto)
+-   PostgreSQL
+-   Impala
+-   GenericSQL
+
+<br/>
+
+## 安装
+
+```bash
+npm install monaco-sql-languages
+```
+
+> Tips: 目前 Monaco SQL Languages 仅保证在 `monaco-editor@0.37.1` 上稳定运行。
+
+<br/>
+
+## 集成
+
+- [集成 Monaco SQL Languages 的 ESM 版本](./documents/integrate-esm.zh-CN.md)
+
+<br/>
+
+## 使用
+
+1. **导入语言的 contribution 文件**
+
+    > Tips: 如果通过 MonacoEditorWebpackPlugin 来集成，插件会帮助我们自动引入相应的 contribution 文件。如果使用其他方式集成，则需要手动引入相应的 contribution 文件。
+
+    ```typescript
+    import 'monaco-sql-languages/esm/languages/mysql/mysql.contribution';
+    import 'monaco-sql-languages/esm/languages/flink/flink.contribution';
+    import 'monaco-sql-languages/esm/languages/spark/spark.contribution';
+    import 'monaco-sql-languages/esm/languages/hive/hive.contribution';
+    import 'monaco-sql-languages/esm/languages/trino/trino.contribution';
+    import 'monaco-sql-languages/esm/languages/pgsql/pgsql.contribution';
+    import 'monaco-sql-languages/esm/languages/impala/impala.contribution';
+    import 'monaco-sql-languages/esm/languages/generic/generic.contribution';
+
+    // 或者你可以通过下面的方式一次性导入所有的语言功能
+    // import 'monaco-sql-languages/esm/all.contributions';
+    ```
+
+2. **设置语言功能**
+
+    你可以通过 `setupLanguageFeatures` 设置语言功能，比如设置 FlinkSQL 语言的自动补全功能。
+    ```typescript
+    import { LanguageIdEnum, setupLanguageFeatures } from 'monaco-sql-languages';
+
+    setupLanguageFeatures(LanguageIdEnum.FLINK, {
+        completionItems: {
+            enable: true,
+            triggerCharacters: [' ', '.'],
+            // 选中补全项后自动触发下一轮补全
+            continuousCompletion: true,
+            completionService: //... ,
+        }
+    });
+    ```
+
+    默认情况下，自动补全功能只提供关键字自动补全与内置SQL代码片段补全, 但你可以通过设置 `completionService` 自定义自动补全项。
+
+    将 `continuousCompletion` 设置为 `true` 可以开启连续补全：当选中一个补全项后，只要插入行为把光标带入了新的语法上下文，就会自动再次触发建议框，从而无需再次输入即可展示下一组建议。具体来说：
+
+    - 未显式设置 `insertText` 的**关键字**补全项会带一个尾随空格插入（如 `SELECT `），从而立即给出下一组建议（列名、`*` 等）；
+    - 当解析器报告当前位置处于 `function` 语法上下文时，关键字补全项会按原样插入（不带尾随空格），且不会再次触发建议框，方便你自行输入函数括号；
+    - `insertText` 以触发字符结尾的补全项会再次触发补全——例如自定义 `completionService` 可以让数据库项以 `insertText: 'my_database.'` 插入，这样选中数据库名后会立即提示该库下的表；
+    - 自定义了 `command` 的补全项不会被修改；普通的实体项（表、列等）不会再次触发，因为接受它们并没有改变补全上下文。
+
+    ```typescript
+    import { languages } from 'monaco-editor/esm/vs/editor/editor.api';
+    import {
+        setupLanguageFeatures,
+        LanguageIdEnum,
+        CompletionService,
+        ICompletionItem,
+        EntityContextType
+     } from 'monaco-sql-languages';
+
+    const completionService: CompletionService = function (
+        model,
+        position,
+        completionContext,
+        suggestions, // 语法推荐信息
+        entities, // 当前编辑器文本的语法上下文中出现的表名、字段名等
+        snippets // 代码片段
+    ) {
+        return new Promise((resolve, reject) => {
+            if (!suggestions) {
+                return Promise.resolve([]);
+            }
+            const { keywords, syntax } = suggestions;
+            const keywordsCompletionItems: ICompletionItem[] = keywords.map((kw) => ({
+                label: kw,
+                kind: languages.CompletionItemKind.Keyword,
+                detail: 'keyword',
+                sortText: '2' + kw
+            }));
+
+            let syntaxCompletionItems: ICompletionItem[] = [];
+
+            syntax.forEach((item) => {
+                if (item.syntaxContextType === EntityContextType.DATABASE) {
+                    const databaseCompletions: ICompletionItem[] = []; // some completions about databaseName
+                    syntaxCompletionItems = [...syntaxCompletionItems, ...databaseCompletions];
+                }
+                if (item.syntaxContextType === EntityContextType.TABLE) {
+                    const tableCompletions: ICompletionItem[] = []; // some completions about tableName
+                    syntaxCompletionItems = [...syntaxCompletionItems, ...tableCompletions];
+                }
+            });
+
+            resolve([...syntaxCompletionItems, ...keywordsCompletionItems]);
+        });
+    };
+
+    setupLanguageFeatures(LanguageIdEnum.FLINK, {
+        completionItems: {
+            enable: true,
+            completionService,
+        }
+    });
+    ```
+
+3. **创建 Monaco Editor 并指定语言**
+
+    ```typescript
+    import { LanguageIdEnum } from 'monaco-sql-languages';
+
+    monaco.editor.create(document.getElementById('container'), {
+        value: 'select * from tb_test',
+        language: LanguageIdEnum.FLINK // languageId
+    });
+    ```
+
+4. **SQL 格式化（可选）**
+
+    格式化依赖 [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) 作为**可选 peer**。主入口**不要求**安装该包：只用补全/诊断时不必安装 `sql-formatter`。
+
+    仅在开启格式化，或 import 格式化 API 时再安装。应用里须 **先 import 一次** format 入口（副作用），再调用 `setupLanguageFeatures(..., { format: { enable: true } })`。未 import 就开启 format 会 **抛错**；若之后再 import format，已加载的语言会自动补偿注册。
+
+    ```bash
+    npm install sql-formatter
+    ```
+
+    必须设置 `format.enable: true` 才会注册编辑器 Format 菜单/快捷键（只传 `fallback` 无效）。**优先级：** 内置 sql-formatter → `fallback`（不可用或抛错）→ 原文。
+
+    ```typescript
+    import { KeyCode, KeyMod } from 'monaco-editor';
+    import 'monaco-sql-languages/format';
+    import { LanguageIdEnum, setupLanguageFeatures } from 'monaco-sql-languages';
+
+    setupLanguageFeatures(LanguageIdEnum.MYSQL, {
+        format: {
+            enable: true, // 注册右键 / 快捷键所必需
+            tabWidth: 4,
+            fallback: (code, languageId) => myLegacyFormat(code, languageId),
+            // 可选；默认 Ctrl/Cmd+Alt+F
+            keybindings: [KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyF]
+        }
+    });
+    ```
+
+    工具栏等外部 UI 请从 format 入口引入（**构建期需要**已安装 `sql-formatter`）：
+
+    ```typescript
+    import { formatEditorSQL, formatSQL } from 'monaco-sql-languages/format';
+
+    await formatEditorSQL(editor, { tabWidth: 4, fallback: myLegacyFormat });
+    const text = await formatSQL(code, LanguageIdEnum.MYSQL, { tabWidth: 4 });
+    ```
+
+    > **版本：** 使用项目中安装的 sql-formatter。peer 要求 **`>=10.7.2`**（覆盖 `hive` / `trino` 与 `tabWidth`）。现代浏览器用 v15+ 亦可；Chrome 75 请 pin `sql-formatter@10.7.2`。
+
+    默认快捷键：**Ctrl/Cmd+Alt+F**（右键 **Format**）。结果与原文相同则不写 edits。
+
+<br/>
+
+## 运行语句按钮
+
+在每条 SQL 语句前显示 gutter 运行图标。创建编辑器后调用 `createRunStatementButton`，编辑器销毁时调用 `dispose()`。
+
+```typescript
+import {
+    LanguageIdEnum,
+    createRunStatementButton,
+    getStatementRangesByLanguage
+} from 'monaco-sql-languages';
+
+const controller = createRunStatementButton({
+    editor,
+    languageId: LanguageIdEnum.FLINK,
+    glyphMarginHoverMessage: '运行此语句',
+    preprocessCode: (code) => code,
+    onRun: ({ statement, editor, model }) => {
+        console.log(statement.text);
+    }
+});
+
+// controller.refresh(); // 需要时手动刷新图标
+// controller.dispose(); // 编辑器卸载时调用
+```
+
+**说明**
+
+- 建议显式传入 `languageId`，以便内置拆分器使用正确的 parser。
+- 自定义 `getStatementRanges` 只需提供准确的 `startLineNumber` 和 `text`，`executableLineNumber` 会自动归一化。
+- 编辑器只读时不显示图标，且忽略点击。
+- 若只需内置拆分逻辑，可单独使用 `getStatementRangesByLanguage(code, languageId, preprocessCode)`。
+- `preprocessCode` 必须与编辑器 model 保持行号对齐（不要增删行导致行号偏移）；装饰是打在原始 model 上的。
+- 默认情况下，仅空白或仅分号的片段（如 `;;;`）不显示运行图标。
+- `executableLineNumber` 会跳过 leading 注释，但不解析字符串字面量；若 leading 字符串内含 `/*` 或 `--` 可能误判（实际场景较少见）。
+- 多条语句的 `executableLineNumber` 相同时会输出 console 警告，gutter 点击以最后一条为准。
+- 编辑器销毁时请调用 `controller.dispose()`（每个编辑器实例对应一个 controller）。
+
+<br/>
+
+## 代码片段
+我们为每种SQL语言内置了一部分代码片段, 帮助我们快速编写SQL。
+
+**如何自定义代码片段?**
+
+在进行设置语言功能时, 通过配置`snippets`实现, 当`snippets`传入空数组时, 则关闭内置代码片段。
+
+```typescript
+import { snippets, CompletionSnippetOption } from 'monaco-sql-languages/esm/main.js';
+
+const customSnippets: CompletionSnippetOption[] = [
+    {
+        label: 'INSERT',
+        prefix: 'insert',
+        // Will join the line with `\n`
+        body: [
+            'INSERT INTO ${1:table_name}',
+            'SELECT ${3:column1}, ${4:column2}',
+            'FROM ${2:source_table}',
+            'WHERE ${5:conditions};\n$6'
+        ],
+        description: "This is an 'insert into select' snippet"
+    }
+];
+
+setupLanguageFeatures(LanguageIdEnum.MYSQL, {
+    completionItems: {
+        enable: true,
+        snippets: [...snippets.mysqlSnippets, ...customSnippets],
+        completionService
+    },
+    preprocessCode
+});
+```
+代码片段详细语法可以参考[vscode-snippet](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_snippet-syntax), 不过与 vscode 代码片段不同的是, 我们仅会在**SQL语句开头**提供 snippets 补全项。
+
+还需要注意的是，如果您提供了自定义的`completionService`方法, 您需要将`snippets`作为补全项手动返回, 以下是一个简单示例:
+
+```typescript
+const completionService: CompletionService = async function (
+    model,
+    position,
+    completionContext,
+    suggestions,
+    entities,
+    snippets
+) {
+    const { keywords } = suggestions;
+
+    const keywordsCompletionItems: ICompletionItem[] = keywords.map((kw) => ({
+        label: kw,
+        kind: languages.CompletionItemKind.Keyword,
+        detail: 'keyword',
+        sortText: '2' + kw
+    }));
+
+    const snippetCompletionItems: ICompletionItem[] =
+        snippets?.map((item) => ({
+            label: item.label || item.prefix,
+            kind: languages.CompletionItemKind.Snippet,
+            filterText: item.prefix,
+            insertText: item.insertText,
+            insertTextRules: languages.CompletionItemInsertTextRule.InsertAsSnippet,
+            sortText: '3' + item.prefix,
+            detail: item.description !== undefined ? item.description : 'SQL Snippet',
+            documentation: item.insertText
+        })) || [];
+
+    return [...keywordsCompletionItems, ...snippetCompletionItems];
+};
+```
+
+**其他注意事项**
+
+当处于代码片段中时, 可以通过`Tab`键移动到下一个输入位置, 但普通的关键字补全功能也是通过`Tab`键接受补全的，这会产生快捷键冲突, 所以 Monaco-Editor 规定, 当处于代码片段上下文时, 不会触发补全功能。
+![snippet-prevent-completion](./documents/images/snippet-prevent-completion.gif)
+如果想要在代码片段中仍能支持智能补全, 可以通过设置 Monaco-Editor 配置项`suggest.snippetsPreventQuickSuggestions`为`false`来实现。
+```typescript
+editor.create(editorElement, {
+    suggest: {
+        snippetsPreventQuickSuggestions: false
+    }
+})
+```
+![snippet-no-prevent-completion](./documents/images/snippet-no-prevent-completion.gif)
+
+## Monaco Theme
+
+> Monaco SQL Languages 计划在未来支持更多的 Monaco Theme.
+
+Monaco SQL Languages 提供了名为 `vsPlusTheme` 的内置主题。 `vsPlusTheme` 灵感来源于 vscode default plus 颜色主题，内部包含三种风格的主题:
+
+-   `darkTheme`: 暗黑色主题，继承自 Monaco 内置主题 `vs-dark`;
+-   `lightTheme`: 亮色主题， 继承自 Monaco 内置主题 `vs`;
+-   `hcBlackTheme`: 黑色高对比度主题，继承自 Monaco 内置主题 `hc-black`;
+
+**使用 Monaco SQL Languages 内置主题 vsPlusTheme**
+
+```typescript
+import { vsPlusTheme } from 'monaco-sql-languages';
+import { editor } from 'monaco-editor';
+
+// 导入主题数据并定义主题, 你可以自定义主题名称, 例如 sql-dark
+editor.defineTheme('sql-dark', vsPlusTheme.darkThemeData);
+editor.defineTheme('sql-light', vsPlusTheme.lightThemeData);
+editor.defineTheme('sql-hc', vsPlusTheme.hcBlackThemeData);
+
+// 指定你已定义的主题
+editor.create(null as any, {
+    theme: 'sql-dark',
+    language: 'flinksql'
+});
+```
+
+**自定义主题**
+
+```typescript
+import { TokenClassConsts, postfixTokenClass } from 'monaco-sql-languages';
+
+// 自定义不同 token 类型的样式
+const myThemeData: editor.IStandaloneThemeData = {
+    base: 'vs-dark',
+    inherit: true,
+    rules: [
+        { token: postfixTokenClass(TokenClassConsts.COMMENT), foreground: '6a9955' },
+        { token: postfixTokenClass(TokenClassConsts.IDENTIFIER), foreground: '9cdcfe' },
+        { token: postfixTokenClass(TokenClassConsts.KEYWORD), foreground: '569cd6' },
+        { token: postfixTokenClass(TokenClassConsts.NUMBER), foreground: 'b5cea8' },
+        { token: postfixTokenClass(TokenClassConsts.STRING), foreground: 'ce9178' },
+        { token: postfixTokenClass(TokenClassConsts.TYPE), foreground: '4ec9b0' }
+    ],
+    colors: {}
+};
+
+// 定义 Monaco 主题
+editor.defineTheme('my-theme', myThemeData);
+```
+
+> `postfixTokenClass` 在大多数情况下不是必须的，但是由于 Monaco SQL Languages 内部为所有的语言都设置了 `tokenPostfix: 'sql'`。所以在某些情况下，如果不使用 `postfixTokenClass` 处理 `TokenClassConsts.*`，自定义的样式可能不生效。
+
+<br/>
+
+## 开发者：本地开发
+
+-   初始化设置
+
+    ```bash
+    pnpm install
+    ```
+
+-   本地启动 web demo
+
+    ```bash
+    pnpm watch-esm
+    cd website
+    pnpm install
+    pnpm dev
+    ```
+
+-   构建
+
+    ```bash
+    pnpm build
+    ```
+
+-   单元测试
+    ```
+    pnpm test
+    ```
+
+<br/>
+
+## 行为守则
+
+本项目采用 [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)。有关更多信息，请参阅 [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)，或联系 [opencode@microsoft.com](mailto:opencode@microsoft.com) 提出任何其他问题或意见。
+
+<br/>
+
+## License
+
+[MIT](https://github.com/Microsoft/monaco-languages/blob/master/LICENSE.md)

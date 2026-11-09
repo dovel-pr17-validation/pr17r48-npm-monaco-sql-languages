@@ -1,0 +1,369 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.3.0](https://github.com/DTStack/monaco-sql-languages/compare/v1.2.2-beta.0...v1.3.0) (2026-10-30)
+
+
+### Features
+
+* [#184](https://github.com/DTStack/monaco-sql-languages/issues/184) support continuous SQL completion ([50fbb40](https://github.com/DTStack/monaco-sql-languages/commit/50fbb40c82160daefa5969ebdd452f114d1d79fe))
+* suggest CTE names and script-created tables in completion demo ([664686d](https://github.com/DTStack/monaco-sql-languages/commit/664686d8d156109e1758ce4efc862c4791df41b8))
+
+### [1.2.1](https://github.com/DTStack/monaco-sql-languages/compare/v1.2.0...v1.2.1) (2026-08-25)
+
+
+### Features
+
+* [#206](https://github.com/DTStack/monaco-sql-languages/issues/206) add configurable SQL formatting with formatSQL API ([c8d7d63](https://github.com/DTStack/monaco-sql-languages/commit/c8d7d635a344421664838ed4cf0ec4e2b24cb004))
+* [#222](https://github.com/DTStack/monaco-sql-languages/issues/222) support sql run feature ([fa7227d](https://github.com/DTStack/monaco-sql-languages/commit/fa7227da3784ca5760ebc1a965f75da1ed661d6a))
+* upgrade dt-sql-parser's version ([cdaa17c](https://github.com/DTStack/monaco-sql-languages/commit/cdaa17cd30b5d0daa4dea7286c3219c4e7e7b52f))
+
+
+### Bug Fixes
+
+* [#165](https://github.com/DTStack/monaco-sql-languages/issues/165) disable completion in comments ([3828f85](https://github.com/DTStack/monaco-sql-languages/commit/3828f85c5a23c80d4be9f82d9c8941a8c9d85a63))
+* [#165](https://github.com/DTStack/monaco-sql-languages/issues/165) optimize comment tokenization ([596e5dc](https://github.com/DTStack/monaco-sql-languages/commit/596e5dcb8523c275f22e870df2d7de774c54e58a))
+
+## [1.2.0](https://github.com/DTStack/monaco-sql-languages/compare/v1.1.1-beta.0...v1.2.0) (2026-07-13)
+
+
+### Features
+
+* upgrade demos' monaco-editor@0.54.0 ([1d87d46](https://github.com/DTStack/monaco-sql-languages/commit/1d87d4610baa1edc9d2df6ee7ddd57c632d6b3e4))
+
+## [1.1.0](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0...v1.1.0) (2026-05-20)
+
+
+### Features
+
+* Add COALESCE function to trino language ([#214](https://github.com/DTStack/monaco-sql-languages/issues/214)) ([6bad88e](https://github.com/DTStack/monaco-sql-languages/commit/6bad88ebc39f2d660f91504a3bcde40af20f86bf))
+* add generic SQL language support ([#217](https://github.com/DTStack/monaco-sql-languages/issues/217)) ([6c72eed](https://github.com/DTStack/monaco-sql-languages/commit/6c72eed9bbb98c0e53dcd9b008e72d111acc85aa))
+* enhance website demo for column completions ([#216](https://github.com/DTStack/monaco-sql-languages/issues/216)) ([5da90ad](https://github.com/DTStack/monaco-sql-languages/commit/5da90ade200cbb04952387949d27bdd821a1e065))
+
+
+### Bug Fixes
+
+* delet panel item output ([0724872](https://github.com/DTStack/monaco-sql-languages/commit/0724872a4fd3e68f429be2b7d9f84edc0d8fa71a))
+* prevent shortcut loss on editor blur ([1e60bde](https://github.com/DTStack/monaco-sql-languages/commit/1e60bde0c29c8736a87d92e96cd91e82495a023b))
+* problem panel show error when init,[#197](https://github.com/DTStack/monaco-sql-languages/issues/197) ([9f63fd2](https://github.com/DTStack/monaco-sql-languages/commit/9f63fd2748e026bf50d82ce275ee3a3a2d4ab3da))
+
+## [1.0.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.15.2...v1.0.0) (2026-03-06)
+
+
+### Features
+
+* add sample integrate with @monaco-editor/react ([6c745d4](https://github.com/DTStack/monaco-sql-languages/commit/6c745d44019229d79a33c5471d8a90c5a4d206cd))
+* optimize dependencies and readme ([612efa5](https://github.com/DTStack/monaco-sql-languages/commit/612efa570989f50a0d10ee028ff9037b9505b3e0))
+* support hover provider feat ([79de9a9](https://github.com/DTStack/monaco-sql-languages/commit/79de9a93126c410c553a72aaf7d98ded1eaf17eb))
+* support quote tablename and alias tablename ([1c97d6c](https://github.com/DTStack/monaco-sql-languages/commit/1c97d6c4a29501215f6ccda7e4bed96b9dbf787d))
+* update contribute ts and update unit test ([5efa097](https://github.com/DTStack/monaco-sql-languages/commit/5efa097eed5a288c7f8481506904b0d812f58d0e))
+* update demo and others after upgrade monaco-editor's version ([4dcfb30](https://github.com/DTStack/monaco-sql-languages/commit/4dcfb309cdd80fcff8ec765b535c7cc974dd25e1))
+* update peerDependencies' lowest version ([1c0aaec](https://github.com/DTStack/monaco-sql-languages/commit/1c0aaec603d3283536ae59cb0d654f29ed31f872))
+* **website:** [#171](https://github.com/DTStack/monaco-sql-languages/issues/171), add parse tree visualizer in panel ([8bb7dd2](https://github.com/DTStack/monaco-sql-languages/commit/8bb7dd268c906923b6d8db0c650e1c3d4d4b6744))
+
+
+### Bug Fixes
+
+* delet panel item output ([c211666](https://github.com/DTStack/monaco-sql-languages/commit/c21166635baad9394df94a53187e06cd4ab50b10))
+* prevent shortcut loss on editor blur ([0f2f811](https://github.com/DTStack/monaco-sql-languages/commit/0f2f811d2cad48e99a4aea9396ffb9284ecd2a21))
+* problem panel show error when init,[#197](https://github.com/DTStack/monaco-sql-languages/issues/197) ([53bf890](https://github.com/DTStack/monaco-sql-languages/commit/53bf890239a88b780e6dd481e1c9fe83cdc62a6d))
+* using forEach to traverse the map to solve compatibility issues ([45204eb](https://github.com/DTStack/monaco-sql-languages/commit/45204ebb46388d68ea150586f1d453ce52bd4b0e))
+* **website:** fix sql theme in monaco editor ([b1fe915](https://github.com/DTStack/monaco-sql-languages/commit/b1fe915d35fc0e416dc988105c701b2e5ca10d04))
+
+## [1.0.0-beta.5](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2025-09-25)
+
+## [1.0.0-beta.4](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2025-09-24)
+
+## [1.0.0-beta.3](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-09-24)
+
+## [1.0.0-beta.2](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2025-09-23)
+
+## [1.0.0-beta.1](https://github.com/DTStack/monaco-sql-languages/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2025-09-23)
+
+## [1.0.0-beta.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.15.1...v1.0.0-beta.0) (2025-09-22)
+
+### [0.15.2](https://github.com/DTStack/monaco-sql-languages/compare/v0.15.2-beta.0...v0.15.2) (2026-03-06)
+
+
+### Bug Fixes
+
+* **flinksql:** [#464](https://github.com/DTStack/monaco-sql-languages/issues/464) upgrade dt-sql-parser@4.4.2 ([d65f36a](https://github.com/DTStack/monaco-sql-languages/commit/d65f36a3ccad2bc0eb01d186bfb92c60dd84cac9))
+
+### [0.15.1](https://github.com/DTStack/monaco-sql-languages/compare/v0.15.0...v0.15.1) (2025-06-06)
+
+
+### Bug Fixes
+
+* [#166](https://github.com/DTStack/monaco-sql-languages/issues/166) upgrade dt-sql-parser version ([#183](https://github.com/DTStack/monaco-sql-languages/issues/183)) ([fea3c3c](https://github.com/DTStack/monaco-sql-languages/commit/fea3c3c79682eed760dd7c00a4a5b830a60d9565))
+
+## [0.15.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.14.0...v0.15.0) (2025-05-16)
+
+
+### Features
+
+* **sqlParser:** upgrade dt-sql-parser@4.3.0 ([58a4304](https://github.com/DTStack/monaco-sql-languages/commit/58a430403d2f3a97e91c500e14d9fd3f4be7427c))
+
+## [0.14.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.13.1...v0.14.0) (2025-05-09)
+
+
+### Features
+
+* **dependency:** upgrade dt-sql-parser@4.2.0 ([6d0d6c2](https://github.com/DTStack/monaco-sql-languages/commit/6d0d6c26c80a31325dd8c400b43ab331dab9ac95))
+* support built-in sql snippets ([#154](https://github.com/DTStack/monaco-sql-languages/issues/154)) ([a5d68bb](https://github.com/DTStack/monaco-sql-languages/commit/a5d68bbb32d219715d4caf6abcb9b98cc754b861))
+
+
+### Bug Fixes
+
+* **scripts:** resolve configuration conflicts ([76d728c](https://github.com/DTStack/monaco-sql-languages/commit/76d728ce75c75dea0e0eaf69b2b9bba44c644952))
+
+### [0.13.1](https://github.com/DTStack/monaco-sql-languages/compare/v0.13.0...v0.13.1) (2025-02-17)
+
+
+### Features
+
+* [#167](https://github.com/DTStack/monaco-sql-languages/issues/167) support dt highlight style ([#168](https://github.com/DTStack/monaco-sql-languages/issues/168)) ([7beb537](https://github.com/DTStack/monaco-sql-languages/commit/7beb5373a40317a7ecd18a9cc66f5f133e27345b))
+* update dt-sql-parser's version ([#174](https://github.com/DTStack/monaco-sql-languages/issues/174)) ([159df20](https://github.com/DTStack/monaco-sql-languages/commit/159df20946198d549705afb61cbbdc7ef72e7d88))
+
+## [0.13.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.1...v0.13.0) (2025-02-13)
+
+
+### Features
+
+* add reference and definition provider ([#145](https://github.com/DTStack/monaco-sql-languages/issues/145)) ([4b9aa93](https://github.com/DTStack/monaco-sql-languages/commit/4b9aa93ace7c128e1f069b1350b7f0232084da5d))
+* support git cz ([a8f6ea8](https://github.com/DTStack/monaco-sql-languages/commit/a8f6ea8c23f1c00264694d3347a9312cfb9ebce4))
+
+
+### Bug Fixes
+
+* [#134](https://github.com/DTStack/monaco-sql-languages/issues/134) upgrade dt-sql-parser@4.0.2 ([06ec26a](https://github.com/DTStack/monaco-sql-languages/commit/06ec26a72e1a42ecf3c46774b15f55eaf9d5c84d))
+* [#146](https://github.com/DTStack/monaco-sql-languages/issues/146) remove postinstall ([3658ee0](https://github.com/DTStack/monaco-sql-languages/commit/3658ee018e2ad374200817f05633341cc4395eb7))
+* deploy ([#148](https://github.com/DTStack/monaco-sql-languages/issues/148)) ([3275599](https://github.com/DTStack/monaco-sql-languages/commit/32755992ae5dec6ff21935cde736d343504ade35))
+* deploy url ([9ed40bf](https://github.com/DTStack/monaco-sql-languages/commit/9ed40bf1756d581c094d301b4afc8d91e31065ff))
+* prod and deploy command ([#156](https://github.com/DTStack/monaco-sql-languages/issues/156)) ([d750ce9](https://github.com/DTStack/monaco-sql-languages/commit/d750ce9e60729c31f1edd2eb3ff776ff73ae0a65))
+
+### [0.12.2](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.1...v0.12.2) (2024-06-19)
+
+
+### Bug Fixes
+
+* [#134](https://github.com/DTStack/monaco-sql-languages/issues/134) upgrade dt-sql-parser@4.0.2 ([c9d381d](https://github.com/DTStack/monaco-sql-languages/commit/c9d381dc6ad836499491c39eeb66b6869d8b4c21))
+
+### [0.12.1](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0...v0.12.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* [#132](https://github.com/DTStack/monaco-sql-languages/issues/132) optimize provideCompletionItems insertTextRules ([#133](https://github.com/DTStack/monaco-sql-languages/issues/133)) ([802f4cd](https://github.com/DTStack/monaco-sql-languages/commit/802f4cdcab33086b8c4fc4bd424cd6d2ddfb98d9))
+
+## [0.12.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.13...v0.12.0) (2024-04-30)
+
+
+### Features
+
+* remove deprecated exports ([b4040bb](https://github.com/DTStack/monaco-sql-languages/commit/b4040bbd7bd9563af6df491f3b83bb3748cd328f))
+* upgrade dt-sql-parser ([#125](https://github.com/DTStack/monaco-sql-languages/issues/125)) ([bcdef98](https://github.com/DTStack/monaco-sql-languages/commit/bcdef98541b17f0f5fbf2eb0d7a441152db0ed3b))
+
+## [0.12.0-beta.14](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.1...v0.12.0-beta.14) (2024-04-26)
+
+
+### Features
+
+* add vscode plus colorTheme ([#65](https://github.com/DTStack/monaco-sql-languages/issues/65)) ([f7a7ea8](https://github.com/DTStack/monaco-sql-languages/commit/f7a7ea811555d6d77a1c3669552d0c92675e21cc))
+* allow the monaco version to be greater than 0.31.0 ([708f38c](https://github.com/DTStack/monaco-sql-languages/commit/708f38c2ff1e6cf7f5814c252db3fc15d2aa4930))
+* build languages ([#114](https://github.com/DTStack/monaco-sql-languages/issues/114)) ([f6b34e5](https://github.com/DTStack/monaco-sql-languages/commit/f6b34e5cde3540ea7af70693542e7b495ece3cb6))
+* disabled commmon sql diagnostics feature ([0a64586](https://github.com/DTStack/monaco-sql-languages/commit/0a6458671f547a80f890c58db998b12ebc81c8d2))
+* export "incomplete" settings in completionService ([#101](https://github.com/DTStack/monaco-sql-languages/issues/101)) ([7567b5b](https://github.com/DTStack/monaco-sql-languages/commit/7567b5be98eefb093639fb56fc234ac8434e1660))
+* highlight keywords of condition expression ([#66](https://github.com/DTStack/monaco-sql-languages/issues/66)) ([a9f6578](https://github.com/DTStack/monaco-sql-languages/commit/a9f65782e6900c94db9fe42e32457965b37f5c16))
+* hive and spark support code completion ([#54](https://github.com/DTStack/monaco-sql-languages/issues/54)) ([6d0eabf](https://github.com/DTStack/monaco-sql-languages/commit/6d0eabfde35929e80ca659ff554ce4d872889f8b))
+* improve flinksql highlight ([#58](https://github.com/DTStack/monaco-sql-languages/issues/58)) ([c204a2c](https://github.com/DTStack/monaco-sql-languages/commit/c204a2c1d2be65b0c78df207bb3e778ff885b6c0))
+* improve highlight conf ([#122](https://github.com/DTStack/monaco-sql-languages/issues/122)) ([0d14d3d](https://github.com/DTStack/monaco-sql-languages/commit/0d14d3d77b0079c461bf7580f303f016623615f0))
+* improve highlighting of hive lanuguage ([#59](https://github.com/DTStack/monaco-sql-languages/issues/59)) ([43c14c8](https://github.com/DTStack/monaco-sql-languages/commit/43c14c8ba638e00ac791afda33ccb1864eee347c))
+* improve highlighting of spark language ([#61](https://github.com/DTStack/monaco-sql-languages/issues/61)) ([4de9815](https://github.com/DTStack/monaco-sql-languages/commit/4de9815402956d737077d085705044c5d9bae328))
+* improve highlighting of trinosql language ([#64](https://github.com/DTStack/monaco-sql-languages/issues/64)) ([f24e4ff](https://github.com/DTStack/monaco-sql-languages/commit/f24e4ffe72aa1ea88497fe000563ad4e37bf8e14))
+* improve setup language features ([#113](https://github.com/DTStack/monaco-sql-languages/issues/113)) ([206b0fd](https://github.com/DTStack/monaco-sql-languages/commit/206b0fd87e77809962c1aa0a92e01c4a8b92331c))
+* improve ts and export ([#112](https://github.com/DTStack/monaco-sql-languages/issues/112)) ([7fceed2](https://github.com/DTStack/monaco-sql-languages/commit/7fceed221764556e0b55b84d595109d0b585b90e))
+* make language features optional ([#72](https://github.com/DTStack/monaco-sql-languages/issues/72)) ([ad49871](https://github.com/DTStack/monaco-sql-languages/commit/ad498713c96a481b6b055852c4447252c97f2f72))
+* migrate ng ([#111](https://github.com/DTStack/monaco-sql-languages/issues/111)) ([7a10a6a](https://github.com/DTStack/monaco-sql-languages/commit/7a10a6ad62c367fc022c62e88e4bc119df65c3cc))
+* optimize ICompletionItem type and add ICompletionList type ([#102](https://github.com/DTStack/monaco-sql-languages/issues/102)) ([00c7c6b](https://github.com/DTStack/monaco-sql-languages/commit/00c7c6ba181e85e889cb0da20fd48880676785d8))
+* support  preprocess code ([#103](https://github.com/DTStack/monaco-sql-languages/issues/103)) ([51777c6](https://github.com/DTStack/monaco-sql-languages/commit/51777c6cc33594673f540d5b695a2928c994c70c))
+* support impala ([#83](https://github.com/DTStack/monaco-sql-languages/issues/83)) ([16934be](https://github.com/DTStack/monaco-sql-languages/commit/16934bec568bfd902a9cc3f06b336fb56b557561))
+* support mysql ([#85](https://github.com/DTStack/monaco-sql-languages/issues/85)) ([4e7d9d4](https://github.com/DTStack/monaco-sql-languages/commit/4e7d9d462d45480e4a819c1894c2685c42e99248))
+* support trinosql language ([#56](https://github.com/DTStack/monaco-sql-languages/issues/56)) ([adbd3df](https://github.com/DTStack/monaco-sql-languages/commit/adbd3df957d6cb3c3e7e9e7cb8a879a6b62699ad))
+* update lock file ([8f6ae1c](https://github.com/DTStack/monaco-sql-languages/commit/8f6ae1c20db2caaa4d570c680e7d939784ed48ad))
+* update sql parser ([#82](https://github.com/DTStack/monaco-sql-languages/issues/82)) ([2cad6b3](https://github.com/DTStack/monaco-sql-languages/commit/2cad6b30ab447cba2ee6c98ffe94e706356d8aa1))
+* upgrade dt-sql-parser ([59e8078](https://github.com/DTStack/monaco-sql-languages/commit/59e807861d8d98f97ef1763ae7ade670bc3edacf))
+* upgrade dt-sql-parser ([#120](https://github.com/DTStack/monaco-sql-languages/issues/120)) ([7fca45e](https://github.com/DTStack/monaco-sql-languages/commit/7fca45ed440753fefec0d85f8f04312d01c6564a))
+* upgrade dt-sql-parser to v4.0.0-beta.4.11 ([4d680f4](https://github.com/DTStack/monaco-sql-languages/commit/4d680f41022f8ebcf8fe5d3acc7093a4a2f29f62))
+* upgrade dt-sql-parser to v4.0.0-beta.4.5 ([23b90fe](https://github.com/DTStack/monaco-sql-languages/commit/23b90fe1e23b2d0b29fe376e946e8a774578d37e))
+* upgrade dt-sql-parser to v4.0.0-beta.4.6 ([f79285c](https://github.com/DTStack/monaco-sql-languages/commit/f79285c8eaeca40676de33e0246b6b71ec71cc19))
+* upgrade dt-sql-parser to v4.0.0-beta.4.7 ([a1caa33](https://github.com/DTStack/monaco-sql-languages/commit/a1caa33b8e5a05a4307e44c9fc805086fee388b4))
+* upgrade dt-sql-parser to v4.0.0-beta.4.9 ([#90](https://github.com/DTStack/monaco-sql-languages/issues/90)) ([c354c52](https://github.com/DTStack/monaco-sql-languages/commit/c354c523d029ad482615dbaae270b3d88faf7696))
+
+
+### Bug Fixes
+
+* [#117](https://github.com/DTStack/monaco-sql-languages/issues/117) sql brackets `{` ([#118](https://github.com/DTStack/monaco-sql-languages/issues/118)) ([5d5741c](https://github.com/DTStack/monaco-sql-languages/commit/5d5741cb5dd987760a96113fc127e768071464ab))
+* [#121](https://github.com/DTStack/monaco-sql-languages/issues/121) customParams use identifier highlight ([#123](https://github.com/DTStack/monaco-sql-languages/issues/123)) ([ea22ff0](https://github.com/DTStack/monaco-sql-languages/commit/ea22ff07611943014fd6bdedf17b760293afda61))
+* correct diag position ([#49](https://github.com/DTStack/monaco-sql-languages/issues/49)) ([560e05b](https://github.com/DTStack/monaco-sql-languages/commit/560e05b0a5b1f9d84f54e9f25b825441f193d33c))
+* correct main field in package.json ([0f70a6e](https://github.com/DTStack/monaco-sql-languages/commit/0f70a6ed2cc373994fbea9c7f369b08f9c1b5625))
+* trino/hive keywords exclude nonReserved ([#88](https://github.com/DTStack/monaco-sql-languages/issues/88)) ([d9a7447](https://github.com/DTStack/monaco-sql-languages/commit/d9a74470fd7893da18d2844fd371cf0058b19533))
+
+## [0.12.0-beta.13](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.12...v0.12.0-beta.13) (2024-04-22)
+
+
+### Features
+
+* improve highlight conf ([#122](https://github.com/DTStack/monaco-sql-languages/issues/122)) ([0d14d3d](https://github.com/DTStack/monaco-sql-languages/commit/0d14d3d77b0079c461bf7580f303f016623615f0))
+
+
+### Bug Fixes
+
+* [#121](https://github.com/DTStack/monaco-sql-languages/issues/121) customParams use identifier highlight ([#123](https://github.com/DTStack/monaco-sql-languages/issues/123)) ([ea22ff0](https://github.com/DTStack/monaco-sql-languages/commit/ea22ff07611943014fd6bdedf17b760293afda61))
+
+## [0.12.0-beta.12](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.11...v0.12.0-beta.12) (2024-04-19)
+
+
+### Features
+
+* upgrade dt-sql-parser ([#120](https://github.com/DTStack/monaco-sql-languages/issues/120)) ([7fca45e](https://github.com/DTStack/monaco-sql-languages/commit/7fca45ed440753fefec0d85f8f04312d01c6564a))
+
+
+### Bug Fixes
+
+* [#117](https://github.com/DTStack/monaco-sql-languages/issues/117) sql brackets `{` ([#118](https://github.com/DTStack/monaco-sql-languages/issues/118)) ([5d5741c](https://github.com/DTStack/monaco-sql-languages/commit/5d5741cb5dd987760a96113fc127e768071464ab))
+
+## [0.12.0-beta.11](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.10...v0.12.0-beta.11) (2024-04-01)
+
+
+### Features
+
+* build languages ([#114](https://github.com/DTStack/monaco-sql-languages/issues/114)) ([f6b34e5](https://github.com/DTStack/monaco-sql-languages/commit/f6b34e5cde3540ea7af70693542e7b495ece3cb6))
+* export "incomplete" settings in completionService ([#101](https://github.com/DTStack/monaco-sql-languages/issues/101)) ([7567b5b](https://github.com/DTStack/monaco-sql-languages/commit/7567b5be98eefb093639fb56fc234ac8434e1660))
+* improve setup language features ([#113](https://github.com/DTStack/monaco-sql-languages/issues/113)) ([206b0fd](https://github.com/DTStack/monaco-sql-languages/commit/206b0fd87e77809962c1aa0a92e01c4a8b92331c))
+* improve ts and export ([#112](https://github.com/DTStack/monaco-sql-languages/issues/112)) ([7fceed2](https://github.com/DTStack/monaco-sql-languages/commit/7fceed221764556e0b55b84d595109d0b585b90e))
+* migrate ng ([#111](https://github.com/DTStack/monaco-sql-languages/issues/111)) ([7a10a6a](https://github.com/DTStack/monaco-sql-languages/commit/7a10a6ad62c367fc022c62e88e4bc119df65c3cc))
+* optimize ICompletionItem type and add ICompletionList type ([#102](https://github.com/DTStack/monaco-sql-languages/issues/102)) ([00c7c6b](https://github.com/DTStack/monaco-sql-languages/commit/00c7c6ba181e85e889cb0da20fd48880676785d8))
+* support  preprocess code ([#103](https://github.com/DTStack/monaco-sql-languages/issues/103)) ([51777c6](https://github.com/DTStack/monaco-sql-languages/commit/51777c6cc33594673f540d5b695a2928c994c70c))
+
+## [0.12.0-beta.10](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.9...v0.12.0-beta.10) (2024-01-04)
+
+
+### Features
+
+* disabled commmon sql diagnostics feature ([0a64586](https://github.com/DTStack/monaco-sql-languages/commit/0a6458671f547a80f890c58db998b12ebc81c8d2))
+* upgrade dt-sql-parser to v4.0.0-beta.4.11 ([4d680f4](https://github.com/DTStack/monaco-sql-languages/commit/4d680f41022f8ebcf8fe5d3acc7093a4a2f29f62))
+
+## [0.12.0-beta.9](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.8...v0.12.0-beta.9) (2023-12-15)
+
+
+### Features
+
+* allow the monaco version to be greater than 0.31.0 ([708f38c](https://github.com/DTStack/monaco-sql-languages/commit/708f38c2ff1e6cf7f5814c252db3fc15d2aa4930))
+* update lock file ([8f6ae1c](https://github.com/DTStack/monaco-sql-languages/commit/8f6ae1c20db2caaa4d570c680e7d939784ed48ad))
+
+## [0.12.0-beta.8](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.7...v0.12.0-beta.8) (2023-12-15)
+
+
+### Features
+
+* support impala ([#83](https://github.com/DTStack/monaco-sql-languages/issues/83)) ([16934be](https://github.com/DTStack/monaco-sql-languages/commit/16934bec568bfd902a9cc3f06b336fb56b557561))
+* support mysql ([#85](https://github.com/DTStack/monaco-sql-languages/issues/85)) ([4e7d9d4](https://github.com/DTStack/monaco-sql-languages/commit/4e7d9d462d45480e4a819c1894c2685c42e99248))
+* update sql parser ([#82](https://github.com/DTStack/monaco-sql-languages/issues/82)) ([2cad6b3](https://github.com/DTStack/monaco-sql-languages/commit/2cad6b30ab447cba2ee6c98ffe94e706356d8aa1))
+* upgrade dt-sql-parser to v4.0.0-beta.4.9 ([#90](https://github.com/DTStack/monaco-sql-languages/issues/90)) ([c354c52](https://github.com/DTStack/monaco-sql-languages/commit/c354c523d029ad482615dbaae270b3d88faf7696))
+
+
+### Bug Fixes
+
+* trino/hive keywords exclude nonReserved ([#88](https://github.com/DTStack/monaco-sql-languages/issues/88)) ([d9a7447](https://github.com/DTStack/monaco-sql-languages/commit/d9a74470fd7893da18d2844fd371cf0058b19533))
+
+## [0.12.0-beta.7](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.6...v0.12.0-beta.7) (2023-11-24)
+
+
+### Features
+
+* upgrade dt-sql-parser to v4.0.0-beta.4.7 ([a1caa33](https://github.com/DTStack/monaco-sql-languages/commit/a1caa33b8e5a05a4307e44c9fc805086fee388b4))
+
+## [0.12.0-beta.6](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.5...v0.12.0-beta.6) (2023-11-20)
+
+
+### Features
+
+* upgrade dt-sql-parser to v4.0.0-beta.4.6 ([f79285c](https://github.com/DTStack/monaco-sql-languages/commit/f79285c8eaeca40676de33e0246b6b71ec71cc19))
+
+## [0.12.0-beta.5](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.4...v0.12.0-beta.5) (2023-11-10)
+
+
+### Features
+
+* make language features optional ([#72](https://github.com/DTStack/monaco-sql-languages/issues/72)) ([ad49871](https://github.com/DTStack/monaco-sql-languages/commit/ad498713c96a481b6b055852c4447252c97f2f72))
+
+## [0.12.0-beta.4](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.3...v0.12.0-beta.4) (2023-11-07)
+
+
+### Features
+
+* upgrade dt-sql-parser to v4.0.0-beta.4.5 ([23b90fe](https://github.com/DTStack/monaco-sql-languages/commit/23b90fe1e23b2d0b29fe376e946e8a774578d37e))
+
+## [0.12.0-beta.3](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.1...v0.12.0-beta.3) (2023-11-06)
+
+
+### Features
+
+* add vscode plus colorTheme ([#65](https://github.com/DTStack/monaco-sql-languages/issues/65)) ([f7a7ea8](https://github.com/DTStack/monaco-sql-languages/commit/f7a7ea811555d6d77a1c3669552d0c92675e21cc))
+* highlight keywords of condition expression ([#66](https://github.com/DTStack/monaco-sql-languages/issues/66)) ([a9f6578](https://github.com/DTStack/monaco-sql-languages/commit/a9f65782e6900c94db9fe42e32457965b37f5c16))
+* hive and spark support code completion ([#54](https://github.com/DTStack/monaco-sql-languages/issues/54)) ([6d0eabf](https://github.com/DTStack/monaco-sql-languages/commit/6d0eabfde35929e80ca659ff554ce4d872889f8b))
+* improve flinksql highlight ([#58](https://github.com/DTStack/monaco-sql-languages/issues/58)) ([c204a2c](https://github.com/DTStack/monaco-sql-languages/commit/c204a2c1d2be65b0c78df207bb3e778ff885b6c0))
+* improve highlighting of hive lanuguage ([#59](https://github.com/DTStack/monaco-sql-languages/issues/59)) ([43c14c8](https://github.com/DTStack/monaco-sql-languages/commit/43c14c8ba638e00ac791afda33ccb1864eee347c))
+* improve highlighting of spark language ([#61](https://github.com/DTStack/monaco-sql-languages/issues/61)) ([4de9815](https://github.com/DTStack/monaco-sql-languages/commit/4de9815402956d737077d085705044c5d9bae328))
+* improve highlighting of trinosql language ([#64](https://github.com/DTStack/monaco-sql-languages/issues/64)) ([f24e4ff](https://github.com/DTStack/monaco-sql-languages/commit/f24e4ffe72aa1ea88497fe000563ad4e37bf8e14))
+* support trinosql language ([#56](https://github.com/DTStack/monaco-sql-languages/issues/56)) ([adbd3df](https://github.com/DTStack/monaco-sql-languages/commit/adbd3df957d6cb3c3e7e9e7cb8a879a6b62699ad))
+
+
+### Bug Fixes
+
+* correct diag position ([#49](https://github.com/DTStack/monaco-sql-languages/issues/49)) ([560e05b](https://github.com/DTStack/monaco-sql-languages/commit/560e05b0a5b1f9d84f54e9f25b825441f193d33c))
+* correct main field in package.json ([0f70a6e](https://github.com/DTStack/monaco-sql-languages/commit/0f70a6ed2cc373994fbea9c7f369b08f9c1b5625))
+
+## [0.12.0-beta.2](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta.1...v0.12.0-beta.2) (2023-09-01)
+
+
+### Features
+
+* upgrade dt-sql-parser to v4.0.0-beta.4.2 ([2a11750](https://github.com/DTStack/monaco-sql-languages/commit/2a117505477b84796098fbf8b21990f9973d214e))
+
+
+### Bug Fixes
+
+* correct diag position ([#49](https://github.com/DTStack/monaco-sql-languages/issues/49)) ([560e05b](https://github.com/DTStack/monaco-sql-languages/commit/560e05b0a5b1f9d84f54e9f25b825441f193d33c))
+* correct main field in package.json ([0f70a6e](https://github.com/DTStack/monaco-sql-languages/commit/0f70a6ed2cc373994fbea9c7f369b08f9c1b5625))
+* correct module field in package.json ([83880a2](https://github.com/DTStack/monaco-sql-languages/commit/83880a2e631d99509c0c965ce234e65591731a62))
+
+## [0.12.0-beta.1](https://github.com/DTStack/monaco-sql-languages/compare/v0.12.0-beta...v0.12.0-beta.1) (2023-06-14)
+
+## [0.12.0-beta](https://github.com/DTStack/monaco-sql-languages/compare/v0.11.0...v0.12.0-beta) (2023-06-14)
+
+### Features
+
+-   allow flink sql language register completionService ([520a02e](https://github.com/DTStack/monaco-sql-languages/commit/520a02e2723acc57a6c57c35e5821ae93864ce2d))
+-   flinksql completion ([1fba38b](https://github.com/DTStack/monaco-sql-languages/commit/1fba38be58201ed2b842d61f419a4400d05fa2d8))
+-   integrated dt-sql-parser auto complete ([c0d5ecf](https://github.com/DTStack/monaco-sql-languages/commit/c0d5ecfe95e3041cb9c6cfd229fbe4f5856b610a))
+-   remove lstypes about because it is for node-lsp ([3b5c06e](https://github.com/DTStack/monaco-sql-languages/commit/3b5c06e8d664894ee0d93f25b69c9202c263cbda))
+-   support syntax completions ([7e00463](https://github.com/DTStack/monaco-sql-languages/commit/7e004638db21276b9d8aaa98df0436c7d01e7b56))
+
+### Bug Fixes
+
+-   update imports ([5c7c8eb](https://github.com/DTStack/monaco-sql-languages/commit/5c7c8eb60406f0890a92acdd731be7fcefc64784))
+-   upgrade react to 18 ([13fdcbb](https://github.com/DTStack/monaco-sql-languages/commit/13fdcbbd0075e2ce9e46232bbee2cd700b82a84d))
+
+## [0.11.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.10.0...v0.11.0) (2023-01-09)
+
+### Features
+
+-   upgrade the molecule to latest version ([377590d](https://github.com/DTStack/monaco-sql-languages/commit/377590d7fb7ae2b1c167781ec86b5ca2ad581ebe))
+
+## [0.10.0](https://github.com/DTStack/monaco-sql-languages/compare/v0.9.5...v0.10.0) (2022-12-16)
+
+### [0.9.5](https://github.com/DTStack/monaco-sql-languages/compare/v0.9.4...v0.9.5) (2022-08-19)
+
+### [0.9.4](https://github.com/DTStack/monaco-sql-languages/compare/v0.9.3...v0.9.4) (2021-12-08)

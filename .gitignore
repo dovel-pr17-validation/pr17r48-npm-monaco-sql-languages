@@ -1,0 +1,11 @@
+/.idea/
+/*.iml
+/node_modules/
+/out/
+/esm/
+/esm-dev/
+/release/
+.history
+/docs/
+.DS_Store
+*.tgz
